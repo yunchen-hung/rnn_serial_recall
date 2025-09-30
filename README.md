@@ -20,8 +20,8 @@ This package provides scripts and tools for training and evaluating a seq2seq mo
 Clone the repository and install the dependencies using the following commands (a Conda environment is recommended):
 
 ```bash
-git clone https://github.com/nds113/nmt_cmr_parallels.git
-cd nmt_cmr_parallels
+git clone https://github.com/nds113/seq2seq_hms.git
+cd seq2seq_hms
 conda env create -f nmtcmr.yml
 conda activate nmtcmr
 pip install -r requirements.txt

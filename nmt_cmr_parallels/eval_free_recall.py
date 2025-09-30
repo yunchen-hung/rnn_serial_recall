@@ -33,12 +33,12 @@ def evaluate_model(checkpoint_path,
                    peers_vocab=True,
                    model_type="encoderdecoder",
                    human_set_file=None,**kwargs):
-    
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     # Initialize the model and load the checkpoint
-    model, vocab = load_recall_model(checkpoint_path, return_vocab=True, device='cuda')
+    model, vocab = load_recall_model(checkpoint_path, return_vocab=True, device=device)
     vocab_size = len(vocab)
-    model.eval().to('cuda')
-    model.set_device('cuda')
+    model.eval().to(device)
+    model.set_device(device)
 
     # Create DataLoader for evaluation
     if test_csv is not None:
@@ -64,7 +64,7 @@ def evaluate_model(checkpoint_path,
         for batch_inputs, batch_targets, seq_lengths in test_loader:
 
             if not isinstance(batch_inputs, list):
-                batch_inputs, batch_targets = batch_inputs.to('cuda'), batch_targets.to('cuda')
+                batch_inputs, batch_targets = batch_inputs.to(device), batch_targets.to(device)
 
             if model_type == 'encoderdecoder':
                 output = model(batch_inputs, seq_lengths[0])

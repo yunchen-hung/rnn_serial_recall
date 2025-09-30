@@ -1,0 +1,28 @@
+name: nmtcmr_copy
+channels:
+  - pytorch
+  - defaults
+dependencies:
+  - python=3.10
+  - pip=24.2
+  - numpy=1.26.4
+  - pandas=2.2.2
+  - matplotlib=3.9.2
+  - seaborn=0.13.2
+  - scipy=1.13.1
+  - scikit-learn
+  - pillow=10.4.0
+  - absl-py=2.1.0
+  - jinja2=3.1.4
+  - requests=2.32.3
+  - pytorch=2.5.1
+  - torchvision=0.20.1
+  - torchaudio
+  - tensorboard=2.17.0
+  - pip:
+      - sympy==1.13.1
+      - mpmath>=1.1.0,<1.4
+      - tqdm==4.67.0
+      - gensim==4.3.3
+      - gymnasium==0.29.1
+      - nltk==3.9.1

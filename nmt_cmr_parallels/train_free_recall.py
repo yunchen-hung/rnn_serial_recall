@@ -56,7 +56,8 @@ def train_seq_model(num_sequences=1000,
                     data_multiplier=10,
                     random_decoding_init=False, **kwargs):
                     
-    
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+ 
     # Initialize the Tensorboard writer
     os.makedirs(log_dir, exist_ok=True)
     writer = SummaryWriter(log_dir=log_dir)
@@ -123,10 +124,10 @@ def train_seq_model(num_sequences=1000,
                                             attention_type=attention_type, 
                                             vocab=vocab,
                                             dropout=dropout,
-                                            device='cuda')
+                                            device=device)
 
-    model.to('cuda')
-    model.set_device('cuda')
+    model.to(device)
+    model.set_device(device)
     optimizer = optim.Adam(model.parameters(), lr=lr)
     scheduler = InverseSquareRootSchedule(optimizer, warmup_steps=4000)
 
@@ -147,7 +148,7 @@ def train_seq_model(num_sequences=1000,
             optimizer.zero_grad()
 
             if not isinstance(batch_inputs, list):
-                batch_inputs, batch_targets = batch_inputs.to('cuda'), batch_targets.to('cuda')
+                batch_inputs, batch_targets = batch_inputs.to(device), batch_targets.to(device)
 
             if model_type == 'encoderdecoder':
                 output = model(batch_inputs, seq_lengths[0], rand_init_decoder=random_decoding_init)
@@ -181,7 +182,7 @@ def train_seq_model(num_sequences=1000,
             for batch_inputs, batch_targets, seq_lengths in tqdm(val_loader, desc=f"Validating epoch {epoch+1}/{epochs}"):
 
                 if not isinstance(batch_inputs, list):
-                    batch_inputs, batch_targets = batch_inputs.to('cuda'), batch_targets.to('cuda')
+                    batch_inputs, batch_targets = batch_inputs.to(device), batch_targets.to(device)
 
 
                 if model_type == 'encoderdecoder':

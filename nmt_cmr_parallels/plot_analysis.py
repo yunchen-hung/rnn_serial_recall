@@ -47,14 +47,14 @@ def generate_recall_plots(results_files,
             positions = list(range(1, len(recall_probabilities) + 1))
             plt.plot(positions, recall_probabilities, marker='o', label=label)
         
-    plt.legend(loc='upper left', bbox_to_anchor=(1, 1))
+    #plt.legend(loc='upper left', bbox_to_anchor=(1, 1))
     plt.savefig(os.path.join(output_log,"recall_vs_position.png"), bbox_inches='tight')
 
     # Plot crp vs lag
     plt.figure(figsize=(10, 6))
     plt.xlabel('Lag')
     plt.ylabel('Conditional Recall Probability')
-    plt.legend()
+    #plt.legend()
     plt.grid(True, which='both', linestyle='--', linewidth=0.5)
     plt.title('Conditional Recall Probability vs. Lag')
     for file in results_files:
@@ -80,7 +80,7 @@ def generate_recall_plots(results_files,
         # Plotting positive lags
         plt.plot(positive_lags, positive_probs, marker='o', color=random_color)
 
-    plt.legend(loc='upper left', bbox_to_anchor=(1, 1))
+    #plt.legend(loc='upper left', bbox_to_anchor=(1, 1))
     plt.savefig(os.path.join(output_log,"crp_vs_position.png"), bbox_inches='tight')
 
     # Plot probability of first recall vs serial position
@@ -109,7 +109,7 @@ def generate_recall_plots(results_files,
             positions = list(range(1, len(recall_probabilities) + 1))
             plt.plot(positions, recall_probabilities, marker='o', label=label)
 
-    plt.legend(loc='upper left', bbox_to_anchor=(1, 1))
+    #plt.legend(loc='upper left', bbox_to_anchor=(1, 1))
     plt.savefig(os.path.join(output_log,"prob_first_recall_vs_position.png"), bbox_inches='tight')
 
     # Plot crp vs semantic sim (if desired)
@@ -145,7 +145,7 @@ def generate_recall_plots(results_files,
             probabilities = list(probs)
             label = os.path.splitext(os.path.basename(file))[0]
             plt.plot(similarities, probabilities, marker='o', label=label)
-        plt.legend()
+        #plt.legend()
         plt.savefig(os.path.join(output_log,"crp_vs_semanticsim.png"))
     
     if semantic_intrusions:

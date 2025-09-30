@@ -1,0 +1,6 @@
+torch>=1.8.0
+nltk>=3.6.0
+gensim>=4.0.0
+tensorboard
+pandas
+gymnasium==0.29.1

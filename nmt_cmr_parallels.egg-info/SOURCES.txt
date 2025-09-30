@@ -1,0 +1,8 @@
+LICENSE
+README.md
+setup.py
+nmt_cmr_parallels.egg-info/PKG-INFO
+nmt_cmr_parallels.egg-info/SOURCES.txt
+nmt_cmr_parallels.egg-info/dependency_links.txt
+nmt_cmr_parallels.egg-info/requires.txt
+nmt_cmr_parallels.egg-info/top_level.txt
