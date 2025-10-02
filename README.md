@@ -43,7 +43,7 @@ Trains a seq2seq model on a free recall task.  '--peers_vocab' indicates that se
 
 **Usage:**
 ```bash
-python -m nmt_cmr_parallels.train_seq_recall --epochs 100 --rnn_mode GRU --attention_type luong --hidden_dim 128 --lr 0.001 --log_dir attention_128dim --checkpoint_path attention_128dim.pt --sequence_length 14 --peers_vocab --dropout 0.1 -v --num_sequences 1000 --seq_tokens
+python -m nmt_cmr_parallels.train_free_recall --epochs 100 --rnn_mode GRU --attention_type luong --hidden_dim 128 --lr 0.001 --log_dir attention_128dim --checkpoint_path attention_128dim.pt --sequence_length 14 --peers_vocab --dropout 0.1 -v --num_sequences 1000 --seq_tokens
 
 ```
 
