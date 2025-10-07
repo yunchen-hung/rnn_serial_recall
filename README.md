@@ -43,7 +43,7 @@ Trains a seq2seq model on a free recall task.  '--peers_vocab' indicates that se
 
 **Usage:**
 ```bash
-python -m nmt_cmr_parallels.train_free_recall --epochs 100 --rnn_mode GRU --attention_type luong --hidden_dim 128 --lr 0.001 --log_dir attention_128dim --checkpoint_path attention_128dim.pt --sequence_length 14 --peers_vocab --dropout 0.1 -v --num_sequences 1000 --seq_tokens
+python -m nmt_cmr_parallels.train_free_recall --epochs 100 --rnn_mode GRU --attention_type luong --hidden_dim 128 --lr 0.001 --batch_size 100 --log_dir attention_128dim --checkpoint_path attention_128dim.pt --sequence_length 14 --peers_vocab --dropout 0.1 -v --seq_tokens
 
 ```
 
@@ -52,7 +52,7 @@ RL training script using a PPO approach to fine-tune pre-trained seq2seq models.
 
 **Usage:**
 ```bash
-python -m nmt_cmr_parallels.train_rl_recall --rnn_mode GRU --attention_type luong --exp-name testrl --num-envs 4 --seq_tokens -v --actor_load_path attention_128dim/attention_128dim.pt 
+python -m nmt_cmr_parallels.train_rl_recall --rnn_mode GRU --attention_type luong --exp-name testrl --num-envs 4 --seq_tokens -v --actor_load_path attention_128dim/attention_128dim.pt  --sequence_length 14 --hidden_dim 128 --vocab_size 10000 --learning-rate 0.005
 
 ```
 
@@ -61,7 +61,7 @@ Evaluates a trained model on free recall.
 
 **Usage:**
 ```bash
-python -m nmt_cmr_parallels.eval_free_recall --checkpoint_path attention_128dim/attention_128dim.pt  --results_path attention_128dim/evaluation.json --num_sequences 1000 --sequence_length 14 --peers_vocab
+python -m nmt_cmr_parallels.eval_free_recall --checkpoint_path attention_128dim/attention_128dim.pt  --results_path attention_128dim/evaluation.json --num_sequences 10000 --sequence_length 14 --peers_vocab
 
 ```
 

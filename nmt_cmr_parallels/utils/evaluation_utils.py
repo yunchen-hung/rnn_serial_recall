@@ -61,7 +61,7 @@ def calculate_conditional_recall_vs_similarity(original_sequences, predicted_seq
 
 def calculate_recall_probability(original_sequences, predicted_sequences, omit_repeats=True):
     """
-    Calculate the recall probability for each position in a sequence.
+    Calculate the free recall probability for each position in a sequence.
 
     Parameters:
     - original_sequences (list of lists): The original sequences of words.
